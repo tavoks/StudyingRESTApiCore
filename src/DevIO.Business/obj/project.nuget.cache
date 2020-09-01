@@ -1,10 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "GVVza7WmQ1pcaj9Jp7hT2c/Teg+GGJrGPnjsrtn9/IMuCODc4sgBrrZ/Zm6UW4/qsOzy9h/J+q6Hkhi00sD9tg==",
+  "dgSpecHash": "uhANmD5vMPuXDxKu++lgXBIxOv3PMeJ3e8qoOJ8LEpFBAt7sl3aSbbYloytlYYK5bkKBUv5Zo4Ezhp0VSG9zKw==",
   "success": true,
   "projectFilePath": "C:\\Users\\tavok\\OneDrive\\Documentos\\Codigo\\DotNet\\MinhaApiCompleta\\src\\DevIO.Business\\DevIO.Business.csproj",
   "expectedPackageFiles": [
-    "C:\\Users\\tavok\\.nuget\\packages\\fluentvalidation\\8.5.0\\fluentvalidation.8.5.0.nupkg.sha512",
+    "C:\\Users\\tavok\\.nuget\\packages\\fluentvalidation\\8.3.0\\fluentvalidation.8.3.0.nupkg.sha512",
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder\\microsoft.netcore.app\\2.2.0\\microsoft.netcore.app.2.2.0.nupkg.sha512",
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder\\microsoft.netcore.dotnetapphost\\2.2.0\\microsoft.netcore.dotnetapphost.2.2.0.nupkg.sha512",
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder\\microsoft.netcore.dotnethostpolicy\\2.2.0\\microsoft.netcore.dotnethostpolicy.2.2.0.nupkg.sha512",

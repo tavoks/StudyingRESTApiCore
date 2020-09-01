@@ -3,17 +3,17 @@ using System.Security.Claims;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Filters;
-using Microsoft.AspNetCore.Routing;
 
 namespace DevIO.Api.Extensions
 {
-    public class CustomAuthorize
+    public class CustomAuthorization
     {
         public static bool ValidarClaimsUsuario(HttpContext context, string claimName, string claimValue)
         {
             return context.User.Identity.IsAuthenticated &&
                    context.User.Claims.Any(c => c.Type == claimName && c.Value.Contains(claimValue));
         }
+
     }
 
     public class ClaimsAuthorizeAttribute : TypeFilterAttribute
@@ -37,12 +37,14 @@ namespace DevIO.Api.Extensions
         {
             if (!context.HttpContext.User.Identity.IsAuthenticated)
             {
-                context.Result = new RedirectToRouteResult(new RouteValueDictionary(new { area = "Identity", page = "/Account/Login", ReturnUrl = context.HttpContext.Request.Path.ToString() }));
+                context.Result = new StatusCodeResult(401);
                 return;
             }
 
-            if (!CustomAuthorize.ValidarClaimsUsuario(context.HttpContext, _claim.Type, _claim.Value))
+            if (!CustomAuthorization.ValidarClaimsUsuario(context.HttpContext, _claim.Type, _claim.Value))
+            {
                 context.Result = new StatusCodeResult(403);
+            }
         }
     }
 }

@@ -1,8 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 using System.Threading.Tasks;
-using DevIO.Business.Interfaces;
+using DevIO.Business.Intefaces;
 using DevIO.Business.Models;
 using DevIO.Business.Models.Validations;
 
@@ -14,7 +12,7 @@ namespace DevIO.Business.Services
         private readonly IUser _user;
 
         public ProdutoService(IProdutoRepository produtoRepository,
-                              INotificador notificador,
+                              INotificador notificador, 
                               IUser user) : base(notificador)
         {
             _produtoRepository = produtoRepository;
@@ -25,7 +23,7 @@ namespace DevIO.Business.Services
         {
             if (!ExecutarValidacao(new ProdutoValidation(), produto)) return;
 
-            var user = _user.GetUserId();
+            //var user = _user.GetUserId();
 
             await _produtoRepository.Adicionar(produto);
         }

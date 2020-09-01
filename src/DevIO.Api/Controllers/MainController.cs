@@ -1,10 +1,9 @@
 ﻿using System;
 using System.Linq;
-using DevIO.Business.Interfaces;
-using DevIO.Business.Notifications;
+using DevIO.Business.Intefaces;
+using DevIO.Business.Notificacoes;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.ModelBinding;
-using Microsoft.CodeAnalysis.CSharp.Syntax;
 
 namespace DevIO.Api.Controllers
 {
@@ -17,13 +16,13 @@ namespace DevIO.Api.Controllers
         protected Guid UsuarioId { get; set; }
         protected bool UsuarioAutenticado { get; set; }
 
-        public MainController(INotificador notificador,
-            IUser appUser)
+        protected MainController(INotificador notificador, 
+                                 IUser appUser)
         {
             _notificador = notificador;
             AppUser = appUser;
 
-            if(appUser.IsAuthenticated())
+            if (appUser.IsAuthenticated())
             {
                 UsuarioId = appUser.GetUserId();
                 UsuarioAutenticado = true;
@@ -55,14 +54,13 @@ namespace DevIO.Api.Controllers
 
         protected ActionResult CustomResponse(ModelStateDictionary modelState)
         {
-            if (!modelState.IsValid) NotificarErroModelInvalida(modelState);
+            if(!modelState.IsValid) NotificarErroModelInvalida(modelState);
             return CustomResponse();
         }
 
         protected void NotificarErroModelInvalida(ModelStateDictionary modelState)
         {
             var erros = modelState.Values.SelectMany(e => e.Errors);
-
             foreach (var erro in erros)
             {
                 var errorMsg = erro.Exception == null ? erro.ErrorMessage : erro.Exception.Message;

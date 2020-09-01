@@ -1,10 +1,8 @@
-﻿using DevIO.Business.Interfaces;
-using Microsoft.AspNetCore.Http;
-using System;
+﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Security.Claims;
-using System.Threading.Tasks;
+using DevIO.Business.Intefaces;
+using Microsoft.AspNetCore.Http;
 
 namespace DevIO.Api.Extensions
 {
@@ -21,7 +19,7 @@ namespace DevIO.Api.Extensions
 
         public Guid GetUserId()
         {
-            return IsAuthenticated() ? Guid.Parse(_accessor.HttpContext.User.GetUserID()) : Guid.Empty;
+            return IsAuthenticated() ? Guid.Parse(_accessor.HttpContext.User.GetUserId()) : Guid.Empty;
         }
 
         public string GetUserEmail()
@@ -47,9 +45,9 @@ namespace DevIO.Api.Extensions
 
     public static class ClaimsPrincipalExtensions
     {
-        public static string GetUserID(this ClaimsPrincipal principal)
+        public static string GetUserId(this ClaimsPrincipal principal)
         {
-            if(principal == null)
+            if (principal == null)
             {
                 throw new ArgumentException(nameof(principal));
             }
@@ -60,7 +58,7 @@ namespace DevIO.Api.Extensions
 
         public static string GetUserEmail(this ClaimsPrincipal principal)
         {
-            if(principal == null)
+            if (principal == null)
             {
                 throw new ArgumentException(nameof(principal));
             }
